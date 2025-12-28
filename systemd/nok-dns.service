@@ -1,0 +1,18 @@
+[Unit]
+Description=nok-dns Daemon - Cloudflare DNS updater
+After=network.target
+
+[Service]
+Type=simple
+User=nokdns
+Group=nokdns
+ExecStart=/opt/nok-dns/venv/bin/python /opt/nok-dns/src/nok_dns/main.py
+Restart=on-failure
+
+# Hardening (ajuste conforme necessidade)
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
