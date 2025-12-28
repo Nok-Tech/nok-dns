@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
 # Instala python e pip
 apk add --no-cache python3 py3-pip
 
