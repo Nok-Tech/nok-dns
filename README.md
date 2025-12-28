@@ -32,3 +32,7 @@ chmod +x install.sh
 sh install.sh
 ```
 
+# Executa a aplicação
+```bash
+python3 -m nok-dns
+```

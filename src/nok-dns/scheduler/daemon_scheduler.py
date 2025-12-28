@@ -1,6 +1,9 @@
-import time
 import signal
+import time
 from threading import Event
+
+from .config import GeneralConfig, load_config
+
 
 class DaemonScheduler:
     def __init__(self, config: GeneralConfig):
@@ -19,16 +22,12 @@ class DaemonScheduler:
     def run(self):
         while not self.stop_event.is_set():
             if self.reload_event.is_set():
-                self.config = load_config()  # Recarregar a configuração
+                self.config = load_config()
                 self.reload_event.clear()
 
-            # Executar lógica de atualização para cada zona e registro
             for zone in self.config.zones:
                 for record in zone.records:
-                    # Exemplo de lógica: obter IP, comparar, atualizar DNS se necessário
-                    # ...
+                    pass
 
-            # Espera até o próximo ciclo
             time.sleep(self.config.interval_seconds)
 
-        # Limpeza e encerramento aqui (se necessário)

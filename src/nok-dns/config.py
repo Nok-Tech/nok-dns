@@ -1,18 +1,19 @@
 import json
-import os
 from dataclasses import dataclass, field
 from typing import List, Optional
+
 
 @dataclass
 class RecordConfig:
     record_id: Optional[str]
     name: str
-    type: str # A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+    type: str  # A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
     prefer_ip: str
     fallback_ip: str
     ttl: int
     proxied: bool
     interval_override_seconds: Optional[int] = None
+
 
 @dataclass
 class ZoneConfig:
@@ -20,6 +21,7 @@ class ZoneConfig:
     cloudflare_api_token: str
     zone_id: str
     records: List[RecordConfig]
+
 
 @dataclass
 class GeneralConfig:
@@ -33,11 +35,11 @@ class GeneralConfig:
     ipify_ipv6_url: str
     zones: List[ZoneConfig] = field(default_factory=list)
 
+
 def load_config(config_path: str = "/etc/nok-dns/config.json") -> GeneralConfig:
     with open(config_path, "r") as f:
         data = json.load(f)
 
-    # Map Json to Dataclass (omite validação aqui por brevidade)
     return GeneralConfig(
         version=data["version"],
         interval_seconds=data["interval_seconds"],
@@ -61,9 +63,12 @@ def load_config(config_path: str = "/etc/nok-dns/config.json") -> GeneralConfig:
                         fallback_ip=r["fallback_ip"],
                         ttl=r["ttl"],
                         proxied=r["proxied"],
-                        interval_override_seconds=r.get("interval_override_seconds")
-                    ) for r in z["records"]
-                ]
-            ) for z in data["zones"]
-        ]
+                        interval_override_seconds=r.get("interval_override_seconds"),
+                    )
+                    for r in z["records"]
+                ],
+            )
+            for z in data["zones"]
+        ],
     )
+
