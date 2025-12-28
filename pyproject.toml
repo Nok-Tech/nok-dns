@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-nok-dns = "nok-dns.main:main"
+nok-dns = "nok_dns.main:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

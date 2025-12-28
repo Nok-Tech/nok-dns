@@ -17,13 +17,7 @@ apk add --no-cache bash curl
 ## Baixe o script de instalação:
 
 ```bash
-curl -fsSL "https://raw.githubusercontent.com/Nok-Tech/nok-dns/refs/heads/main/install.sh" -o install.sh
-```
-
-## Dê permissão de execução ao script:
-
-```bash
-chmod +x install.sh
+curl -fsSL "https://raw.githubusercontent.com/Nok-Tech/nok-dns/refs/heads/main/install.sh" -o install.sh && chmod +x install.sh
 ```
 
 ## Execute o script de instalação:
@@ -34,5 +28,5 @@ sh install.sh
 
 # Executa a aplicação
 ```bash
-python3 -m nok-dns
+cd /opt/nok-dns && pip install -e . && python -m nok-dns
 ```
