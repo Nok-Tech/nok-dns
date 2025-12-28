@@ -7,21 +7,28 @@ Um gerenciador de conexões estilo ddns, porem com foco em atualização de um d
 - Python 3.14.2 ou superior
 - Pip 24.0 ou superior
 
-# Baixe o script de instalação:
+# Instalação
 
+## Instale as dependências necessarias
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Nok-Tech/nok-dns/refs/heads/main/install.sh -o install.sh
+apk add --no-cache bash curl
 ```
 
-# Dê permissão de execução ao script:
+## Baixe o script de instalação:
+
+```bash
+curl -fsSL "https://raw.githubusercontent.com/Nok-Tech/nok-dns/refs/heads/main/install.sh" -o install.sh
+```
+
+## Dê permissão de execução ao script:
 
 ```bash
 chmod +x install.sh
 ```
 
-# Execute o script de instalação:
+## Execute o script de instalação:
 
 ```bash
-./install.sh
+sh install.sh
 ```
 
